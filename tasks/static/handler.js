@@ -16,11 +16,12 @@ var handle = function(e) {
     }
 
     if (Object.keys(students).length ==0) {
-        html += '<p>No one claimed this ticket yet! Claim it by typing your name below:</p><input type="text" id="new_name" value="Your name here"></input><input type="submit" value="Submit" id="claim_' + bugID + '" class="button"/>';
+        html += '<p>No one has claimed this ticket yet! Claim it by typing your name below:<input type="text" id="new_name" value="Your name here"></input><input type="submit" value="Submit" id="claim_' + bugID + '" class="button"/></p>';
     }
 
-    else {
-        html += '<p>Currently being worked on by ' + students + '</p>';
+
+    else { 
+        html += '<p>Currently being worked on by ' + students + '.</br>If you no longer wish to work on this ticket, click the unclaim button.<input type="submit" value="Unclaim" id="unclaim_' + bugID + '" class="button/"></p>';
     }
 
     html = html + '<p style="text-align: right;"><a class="deep_go"  href=' + targetLink + '"target="_blank"">View Open Task Here</a>';
@@ -46,6 +47,13 @@ var handle = function(e) {
         }
     );
     $("#new_name").val("");
+
+    $('#unclaim_' + bugID).on(
+        'click',
+        function(){
+            $dialog.dialog('close');
+            unclaim(bugID, students); 
+        });
 
     // prevent the default action, e.g., following a link
     return false;

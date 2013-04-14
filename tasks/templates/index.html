@@ -188,6 +188,15 @@ tt
           );
       };
 
+      var unclaim = function(task_id, name) {
+          return jQuery.post(
+              '{% url "tasks-unclaim" %}',
+              {task: task_id,
+               name: name
+              }
+          );
+      };
+
 
       function updateSettings(items) {
       window.example_items = items.map(
