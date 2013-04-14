@@ -21,7 +21,7 @@ var handle = function(e) {
 
 
     else { 
-        html += '<p>Currently being worked on by ' + students + '.</br>If you no longer wish to work on this ticket, click the unclaim button.<input type="submit" value="Unclaim" id="unclaim_' + bugID + '" class="button/"></p>';
+        html += '<p>Currently being worked on by ' + students + '.</br>If ' + students + ' no longer wishes to work on this ticket, please click the unclaim button.<input type="submit" value="Unclaim" id="unclaim_' + bugID + '" class="button/"></p>';
     }
 
     html = html + '<p style="text-align: right;"><a class="deep_go"  href=' + targetLink + '"target="_blank"">View Open Task Here</a>';
