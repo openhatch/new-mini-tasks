@@ -8,7 +8,9 @@ from django.views.generic import (
 
 import tasks.forms
 import tasks.models
-
+from django.shortcuts import render, redirect
+from django.utils import simplejson
+from tasks.models import Task, Student 
 
 class TaskIndex(TemplateView):
 
@@ -57,3 +59,13 @@ class ClaimTask(FormView):
             }),
             content_type='application/json',
         )
+
+def UnClaimTask(request):
+    if request.method == "POST": 
+        a = request.POST
+        task_id = a[u'task']
+        my_task = Task.objects.get(id=task_id);
+        print my_task, str(my_task.closed)
+        my_task.closed = True 
+        my_task.save()
+        return redirect("/")

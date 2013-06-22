@@ -19,4 +19,6 @@ urlpatterns = patterns('',
         name='tasks-data'),
     url(r'^claim/$', tasks.views.ClaimTask.as_view(),
         name='tasks-claim'),
+    url(r'^unclaim/$',tasks.views.UnClaimTask,
+        name='tasks-unclaim')
 )
